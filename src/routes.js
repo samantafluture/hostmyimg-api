@@ -7,7 +7,8 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/posts', multer(multerConfig).single('file'), (req, res) => {
-    return res.json();
+    console.log(req.file);
+    return res.json({ message: 'arquivo recebido!' });
 });
 
 module.exports = routes;

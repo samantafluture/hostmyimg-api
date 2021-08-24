@@ -9,4 +9,6 @@ app.use(morgan('dev'));
 
 app.use(require('./routes'));
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('HostMyImg API running...');
+});
