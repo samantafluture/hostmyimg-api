@@ -12,17 +12,30 @@ $ mongo
 > use hostmyimg-api
 ```
 
-## Iniciar o projeto
+## Preparando o ambiente
 
 - dando início ao projeto e configurando o package.json
 
 `npm init`
 
-- baixar os pacotes principais que vamos utilizar com 
+- baixar os pacotes principais que vamos utilizar 
 
 `npm install express morgan mongoose multer`
 
-- criando e organizando pastas e arquivos
+- baixar o nodemon como dependência de desenvolvimento 
+
+`npm install --save-dev nodemon`
+
+- criar scripts para startar o projeto no package.json
+
+```json
+"scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  }
+```
+
+- criar e organizar pastas e arquivos
 
 ```bash
 /hostmyimg-api
@@ -30,7 +43,8 @@ $ mongo
 ├── src
 │   ├── index.js
 │   ├── routes.js
-│   │   ├── 
+│   ├── config
+│   │   ├── multer.js
 ├── package.json
 ├── package-lock.json
 ```
