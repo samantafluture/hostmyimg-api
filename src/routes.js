@@ -2,13 +2,23 @@ const routes = require('express').Router();
 const multer = require('multer');
 const multerConfig = require('./config/multer');
 
+const Post = require('./models/Post');
+
 routes.get('/', (req, res) => {
     return res.json({ message: 'Welcome to HostMyImg API!' });
 });
 
-routes.post('/posts', multer(multerConfig).single('file'), (req, res) => {
-    console.log(req.file);
-    return res.json({ message: 'arquivo recebido!' });
+routes.post('/posts', multer(multerConfig).single('file'), async (req, res) => {
+    const { originalname: name, size, filename: key } = req.file;
+
+    const post = await Post.create({
+        name,
+        size,
+        key,
+        url: ''
+    });
+
+    return res.json(post);
 });
 
 module.exports = routes;
