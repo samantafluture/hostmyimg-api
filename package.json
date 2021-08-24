@@ -1,0 +1,30 @@
+{
+  "name": "hostmyimg-api",
+  "version": "1.0.0",
+  "description": "api for host images",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samantafluture/hostmyimg-api.git"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "nodejs"
+  ],
+  "author": "Samanta Fluture",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samantafluture/hostmyimg-api/issues"
+  },
+  "homepage": "https://github.com/samantafluture/hostmyimg-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.8",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3"
+  }
+}
