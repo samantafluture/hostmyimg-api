@@ -4,6 +4,13 @@ const crypto = require('crypto');
 const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 
+myConfig = new aws.Config();
+myConfig.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_DEFAULT_REGION
+});
+
 const storageTypes = {
     local: multer.diskStorage({
         destination: (req, file, cb) => {
@@ -21,7 +28,7 @@ const storageTypes = {
     }),
     s3: multerS3({
         s3: new aws.S3(),
-        bucket: 'hostmyimg',
+        bucket: process.env.BUCKET_NAME,
         contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: (req, file, cb) => {
@@ -38,7 +45,7 @@ const storageTypes = {
 
 module.exports = {
     dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
-    storage: storageTypes['s3'],
+    storage: storageTypes[process.env.STORAGE_TYPE],
     limits: {
         fileSize: 2 * 1024 * 1024
     },
