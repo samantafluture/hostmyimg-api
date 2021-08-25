@@ -10,6 +10,15 @@ class PostController {
         }
     }
 
+    static async getPostById(req, res) {
+        try {
+            const post = await Post.findById(req.params.id);
+            return res.status(200).json(post);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
     static async createPost(req, res) {
         const { originalname: name, size, key, location: url = '' } = req.file;
         try {
