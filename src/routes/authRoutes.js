@@ -10,6 +10,6 @@ router
         [verifySignUp.checkDuplicateUsernameOrEmail],
         AuthController.signup
     )
-    .post('/signin', AuthController.signin);
+    .post('/login', AuthController.login);
 
 module.exports = router;

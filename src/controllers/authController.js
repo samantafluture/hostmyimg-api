@@ -15,11 +15,10 @@ exports.signup = (req, res) => {
             return;
         }
         res.status(200).json(user);
-        // .send({ message: 'User was registered successfully!' });
     });
 };
 
-exports.signin = (req, res) => {
+exports.login = (req, res) => {
     User.findOne({
         username: req.body.username
     }).exec((err, user) => {
