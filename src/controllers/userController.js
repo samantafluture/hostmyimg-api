@@ -1,9 +1,13 @@
 const User = require('./../models/User');
+const Post = require('./../models/Post');
 
 class UserController {
     static async getAllUsers(req, res) {
         try {
-            const users = await User.find({});
+            const users = await User.find({}).populate({
+                path: 'posts',
+                select: 'name size key url'
+            });
             return res.status(200).json(users);
         } catch (error) {
             return res.status(500).json(error.message);

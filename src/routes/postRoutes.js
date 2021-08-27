@@ -26,3 +26,4 @@ router
     .delete('/posts/:id', [authJwt.verifyToken], PostController.deletePost);
 
 module.exports = router;
+

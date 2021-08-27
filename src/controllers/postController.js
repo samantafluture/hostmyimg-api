@@ -1,4 +1,5 @@
 const Post = require('./../models/Post');
+const User = require('./../models/User');
 
 class PostController {
     static async getAllPosts(req, res) {
@@ -28,6 +29,7 @@ class PostController {
                 key,
                 url
             });
+
             return res.status(200).json(post);
         } catch (error) {
             return res.status(500).json(error.message);
