@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const path = require('path');
 const routes = require('./routes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocs = require('./swagger.json');
 
 const app = express();
 routes(app);
@@ -30,6 +32,7 @@ app.use(function (req, res, next) {
     );
     next();
 });
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * Server setup

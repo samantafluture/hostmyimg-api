@@ -11,4 +11,8 @@ module.exports = (app) => {
     app.get('/', (req, res) => {
         res.json({ message: 'Welcome to HostMyImg API :D' });
     });
+
+    app.get('/terms', (req, res) => {
+        res.json({ message: 'This API is free and open-source.' });
+    });
 };
