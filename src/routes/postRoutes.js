@@ -17,7 +17,7 @@ router
 
     .get('/posts', [authJwt.verifyToken], PostController.getAllPosts)
     .get('/posts/:id', [authJwt.verifyToken], PostController.getPostById)
-    .get('/posts/users/:id', [authJwt.verifyToken], PostController.getUserByPost)
+    .get('/posts/:id/users', [authJwt.verifyToken], PostController.getUserByPost)
     .post(
         '/posts',
         [authJwt.verifyToken],

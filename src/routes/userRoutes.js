@@ -10,7 +10,7 @@ router
     .get('/users', [authJwt.verifyToken], UserController.getAllUsers)
     .get('/users/:id', [authJwt.verifyToken], UserController.getUserById)
     .get(
-        '/users/posts/:id',
+        '/users/:id/posts',
         [authJwt.verifyToken],
         UserController.getPostsByUser
     )
