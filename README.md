@@ -1,6 +1,6 @@
 # HostMyImg API
 
-A minimal RESTful API for hosting imagens (.png, .jpg, .gif) online. 
+A minimal RESTful API for hosting images (.png, .jpg, .gif) online. 
 
 ## Usage
 
