@@ -36,6 +36,41 @@ class PostController {
         }
     }
 
+    static async createPostLoggedIn (req, res) {
+        const { originalname: name, size, key, location: url = '' } = req.file;
+        const user = req.params.id;
+
+        try {
+            const post = await Post.create({
+                name,
+                size,
+                key,
+                url,
+                user
+            });
+            await post.save();
+
+            const userById = await User.findById(user);
+
+            userById.posts.push(post);
+            await userById.save();
+
+            return res.status(200).send(userById);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
+    static async getUserByPost(req, res) {
+        const { id } = req.params;
+        try {
+            const userByPost = await Post.findById(id).populate('user');
+            return res.status(200).send(userByPost);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
     static async deletePost(req, res) {
         try {
             const post = await Post.findById(req.params.id);

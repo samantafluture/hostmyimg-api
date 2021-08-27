@@ -1,5 +1,4 @@
 const User = require('./../models/User');
-const Post = require('./../models/Post');
 
 class UserController {
     static async getAllUsers(req, res) {
@@ -18,6 +17,16 @@ class UserController {
         try {
             const user = await User.findById(req.params.id);
             return res.status(200).json(user);
+        } catch (error) {
+            return res.status(500).json(error.message);
+        }
+    }
+
+    static async getPostsByUser(req, res) {
+        const { id } = req.params;
+        try {
+            const user = await User.findById(id).populate('posts');
+            return res.status(200).send(user.posts);
         } catch (error) {
             return res.status(500).json(error.message);
         }

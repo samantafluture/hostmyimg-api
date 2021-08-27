@@ -17,13 +17,19 @@ router
 
     .get('/posts', [authJwt.verifyToken], PostController.getAllPosts)
     .get('/posts/:id', [authJwt.verifyToken], PostController.getPostById)
+    .get('/posts/users/:id', [authJwt.verifyToken], PostController.getUserByPost)
     .post(
         '/posts',
         [authJwt.verifyToken],
         multer(multerConfig).single('file'),
         PostController.createPost
     )
+    .post(
+        '/posts/:id',
+        [authJwt.verifyToken],
+        multer(multerConfig).single('file'),
+        PostController.createPostLoggedIn
+    )
     .delete('/posts/:id', [authJwt.verifyToken], PostController.deletePost);
 
 module.exports = router;
-

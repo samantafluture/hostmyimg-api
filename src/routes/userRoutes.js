@@ -9,6 +9,11 @@ router
 
     .get('/users', [authJwt.verifyToken], UserController.getAllUsers)
     .get('/users/:id', [authJwt.verifyToken], UserController.getUserById)
+    .get(
+        '/users/posts/:id',
+        [authJwt.verifyToken],
+        UserController.getPostsByUser
+    )
     .delete('/users/:id', [authJwt.verifyToken], UserController.deleteUser);
 
 module.exports = router;
