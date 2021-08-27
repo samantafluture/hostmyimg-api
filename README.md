@@ -1,10 +1,12 @@
 # HostMyImg API
 
-API de hospedagem de imagem.
+API for hosting imagens (.png, .jpg, .gif) online.
 
 ## Tecnologias
 
 - Node.js
 - Express
-- MongoDB
+- MongoDB, Mongoose
+- JWT Token
+- AWS, S3
 
