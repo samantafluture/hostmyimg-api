@@ -17,8 +17,6 @@ UserSchema.virtual('posts', {
     localField: '_id', //Find in Model, where localField
     foreignField: 'user', // is equal to foreignField
  });
-
- // Set Object and Json property to true. Default is set to false
  UserSchema.set('toObject', { virtuals: true });
  UserSchema.set('toJSON', { virtuals: true });
 */
