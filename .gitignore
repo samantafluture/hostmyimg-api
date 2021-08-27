@@ -6,5 +6,7 @@ node_modules
 tmp/uploads/*
 !tmp/uploads/.gitkeep
 tmp/.DS_Store
+tmp/.DS_Store?
 
 .DS_Store
+.DS_Store?
